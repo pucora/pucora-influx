@@ -3,7 +3,7 @@ package histogram
 import (
 	"testing"
 
-	metrics "github.com/pucora/velonetics-metrics/v2"
+	metrics "github.com/pucora/pucora-metrics/v2"
 )
 
 func Test_isEmpty(t *testing.T) {

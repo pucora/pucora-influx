@@ -3,7 +3,7 @@ To load the extension into Pucora you need to specify it in the extra_config sec
 ```
 "extra_config":{
 ...
-"github_com/pucora/velonetics-influx":{
+"github_com/pucora/pucora-influx":{
       "address":"http://192.168.99.9:8086",
       "ttl":"25s",
       "buffer_size":0
@@ -16,16 +16,16 @@ The necessary parameters are:
  - ttl - expressed as \<value>\<units> , you can find accepted values here https://golang.org/pkg/time/#ParseDuration
  - buffer_size - 0 to send events immediately or the number of points that should be sent together. 
 
-For this to work you need to have velonetics-metric activated as well in extra_config:
+For this to work you need to have pucora-metric activated as well in extra_config:
 ```
 ...
-"github_com/pucora/velonetics-metrics": {
+"github_com/pucora/pucora-metrics": {
         "collection_time": "30s",
         "listen_address": "127.0.0.1:8090"
     }
 ...
 ```  
-The collection_time and ttl parameters are strongly linked. The module velonetics-metrics collects the metrics every **collection_time**, while velonetics-influxdb checks every **ttl** if there are collected points to be sent.
+The collection_time and ttl parameters are strongly linked. The module pucora-metrics collects the metrics every **collection_time**, while pucora-influxdb checks every **ttl** if there are collected points to be sent.
 
 You can find an example configuration in this folder as well as a dashboard JSON file for Grafana 5.0+.
  

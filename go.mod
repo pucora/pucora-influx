@@ -1,4 +1,4 @@
-module github.com/pucora/velonetics-influx/v2
+module github.com/pucora/pucora-influx/v2
 
 go 1.24.0
 
@@ -6,7 +6,7 @@ toolchain go1.24.6
 
 require (
 	github.com/influxdata/influxdb v1.9.7
-	github.com/pucora/velonetics-metrics/v2 v2.0.0
+	github.com/pucora/pucora-metrics/v2 v2.0.0
 	github.com/pucora/lura/v2 v2.0.0
 )
 

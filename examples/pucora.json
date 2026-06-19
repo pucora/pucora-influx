@@ -1,26 +1,26 @@
 {
   "version": 2,
   "extra_config": {
-    "github_com/pucora/velonetics-gologging": {
+    "github_com/pucora/pucora-gologging": {
       "level": "WARNING",
       "prefix": "[PUCORA]",
       "syslog": false,
       "stdout": true
     },
-    "veloneticsdesigner": {
+    "pucoradesigner": {
       "endpoint_defaults": {
-        "github.com/pucora/velonetics-ratelimit/juju/router": {
+        "github.com/pucora/pucora-ratelimit/juju/router": {
           "maxRate": 0,
           "clientMaxRate": 0
         }
       }
     },
-    "github_com/pucora/velonetics-influx":{
+    "github_com/pucora/pucora-influx":{
       "address":"http://192.168.99.9:8086",
       "ttl":"25s",
       "buffer_size":0
     },
-    "github_com/pucora/velonetics-metrics": {
+    "github_com/pucora/pucora-metrics": {
         "collection_time": "30s",
         "listen_address": "127.0.0.1:8090"
     }
@@ -56,12 +56,12 @@
       "output_encoding": "json",
       "concurrent_calls": 3,
       "extra_config": {
-        "github_com/pucora/velonetics-httpsecure": {
+        "github_com/pucora/pucora-httpsecure": {
           "disable": true,
           "allowed_hosts": [],
           "ssl_proxy_headers": {}
         },
-        "github.com/pucora/velonetics-ratelimit/juju/router": {
+        "github.com/pucora/pucora-ratelimit/juju/router": {
           "maxRate": 0,
           "clientMaxRate": 0
         }
@@ -77,7 +77,7 @@
           ],
           "disable_host_sanitize": true,
           "extra_config": {
-            "github.com/pucora/velonetics-oauth2-clientcredentials": {
+            "github.com/pucora/pucora-oauth2-clientcredentials": {
               "is_disabled": true,
               "endpoint_params": {}
             }

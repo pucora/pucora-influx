@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/influxdata/influxdb/client/v2"
-	metrics "github.com/pucora/velonetics-metrics/v2"
+	metrics "github.com/pucora/pucora-metrics/v2"
 	"github.com/pucora/lura/v2/logging"
 )
 
