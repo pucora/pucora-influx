@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/velonetics/lura/v2/config"
+	"github.com/pucora/lura/v2/config"
 )
 
 type influxConfig struct {
@@ -19,7 +19,7 @@ type influxConfig struct {
 func configGetter(extraConfig config.ExtraConfig) (influxConfig, error) {
 	cfg := influxConfig{
 		ttl:      time.Minute,
-		database: "velonetics",
+		database: "pucora",
 	}
 
 	castedConfig, ok := extraConfig[Namespace].(map[string]interface{})

@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/influxdata/influxdb/client/v2"
-	metrics "github.com/velonetics/velonetics-metrics/v2"
-	"github.com/velonetics/lura/v2/logging"
+	metrics "github.com/pucora/velonetics-metrics/v2"
+	"github.com/pucora/lura/v2/logging"
 )
 
 func Points(hostname string, now time.Time, histograms map[string]metrics.HistogramData, logger logging.Logger) []*client.Point {
@@ -22,10 +22,10 @@ func Points(hostname string, now time.Time, histograms map[string]metrics.Histog
 }
 
 var (
-	latencyPattern = `velonetics\.proxy\.latency\.layer\.([a-zA-Z]+)\.name\.(.*)\.complete\.(true|false)\.error\.(true|false)`
+	latencyPattern = `pucora\.proxy\.latency\.layer\.([a-zA-Z]+)\.name\.(.*)\.complete\.(true|false)\.error\.(true|false)`
 	latencyRegexp  = regexp.MustCompile(latencyPattern)
 
-	routerPattern = `velonetics\.router\.response\.(.*)\.(size|time)`
+	routerPattern = `pucora\.router\.response\.(.*)\.(size|time)`
 	routerRegexp  = regexp.MustCompile(routerPattern)
 )
 
@@ -87,7 +87,7 @@ func routerPoints(hostname string, now time.Time, histograms map[string]metrics.
 }
 
 func debugPoint(hostname string, now time.Time, histograms map[string]metrics.HistogramData, logger logging.Logger) *client.Point {
-	hd, ok := histograms["velonetics.service.debug.GCStats.Pause"]
+	hd, ok := histograms["pucora.service.debug.GCStats.Pause"]
 	if !ok {
 		return nil
 	}
@@ -104,7 +104,7 @@ func debugPoint(hostname string, now time.Time, histograms map[string]metrics.Hi
 }
 
 func runtimePoint(hostname string, now time.Time, histograms map[string]metrics.HistogramData, logger logging.Logger) *client.Point {
-	hd, ok := histograms["velonetics.service.runtime.MemStats.PauseNs"]
+	hd, ok := histograms["pucora.service.runtime.MemStats.PauseNs"]
 	if !ok {
 		return nil
 	}

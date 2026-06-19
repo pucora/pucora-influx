@@ -4,14 +4,14 @@ import (
 	"time"
 
 	"github.com/influxdata/influxdb/client/v2"
-	"github.com/velonetics/lura/v2/logging"
+	"github.com/pucora/lura/v2/logging"
 )
 
 func Points(hostname string, now time.Time, counters map[string]int64, logger logging.Logger) []*client.Point {
 	res := make([]*client.Point, 4)
 
 	in := map[string]interface{}{
-		"gauge": int(counters["velonetics.router.connected-gauge"]),
+		"gauge": int(counters["pucora.router.connected-gauge"]),
 	}
 	incoming, err := client.NewPoint("router", map[string]string{"host": hostname, "direction": "in"}, in, now)
 	if err != nil {
@@ -21,7 +21,7 @@ func Points(hostname string, now time.Time, counters map[string]int64, logger lo
 	res[0] = incoming
 
 	out := map[string]interface{}{
-		"gauge": int(counters["velonetics.router.disconnected-gauge"]),
+		"gauge": int(counters["pucora.router.disconnected-gauge"]),
 	}
 	outgoing, err := client.NewPoint("router", map[string]string{"host": hostname, "direction": "out"}, out, now)
 	if err != nil {
@@ -34,14 +34,14 @@ func Points(hostname string, now time.Time, counters map[string]int64, logger lo
 	runtime := map[string]interface{}{}
 
 	for k, v := range counters {
-		if k == "velonetics.router.connected-gauge" || k == "velonetics.router.disconnected-gauge" {
+		if k == "pucora.router.connected-gauge" || k == "pucora.router.disconnected-gauge" {
 			continue
 		}
-		if k[:22] == "velonetics.service.debug." {
+		if k[:22] == "pucora.service.debug." {
 			debug[k[22:]] = int(v)
 			continue
 		}
-		if k[:24] == "velonetics.service.runtime." {
+		if k[:24] == "pucora.service.runtime." {
 			runtime[k[24:]] = int(v)
 			continue
 		}

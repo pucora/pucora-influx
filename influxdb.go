@@ -6,16 +6,16 @@ import (
 	"time"
 
 	"github.com/influxdata/influxdb/client/v2"
-	ginmetrics "github.com/velonetics/velonetics-metrics/v2/gin"
-	"github.com/velonetics/lura/v2/config"
-	"github.com/velonetics/lura/v2/logging"
+	ginmetrics "github.com/pucora/velonetics-metrics/v2/gin"
+	"github.com/pucora/lura/v2/config"
+	"github.com/pucora/lura/v2/logging"
 
-	"github.com/velonetics/velonetics-influx/v2/counter"
-	"github.com/velonetics/velonetics-influx/v2/gauge"
-	"github.com/velonetics/velonetics-influx/v2/histogram"
+	"github.com/pucora/velonetics-influx/v2/counter"
+	"github.com/pucora/velonetics-influx/v2/gauge"
+	"github.com/pucora/velonetics-influx/v2/histogram"
 )
 
-const Namespace = "github_com/velonetics/velonetics-influx"
+const Namespace = "github_com/pucora/velonetics-influx"
 const logPrefix = "[SERVICE: InfluxDB]"
 
 type clientWrapper struct {

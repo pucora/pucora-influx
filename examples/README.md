@@ -1,9 +1,9 @@
 ## Example
-To load the extension into Velonetics you need to specify it in the extra_config section of the config:
+To load the extension into Pucora you need to specify it in the extra_config section of the config:
 ```
 "extra_config":{
 ...
-"github_com/velonetics/velonetics-influx":{
+"github_com/pucora/velonetics-influx":{
       "address":"http://192.168.99.9:8086",
       "ttl":"25s",
       "buffer_size":0
@@ -19,7 +19,7 @@ The necessary parameters are:
 For this to work you need to have velonetics-metric activated as well in extra_config:
 ```
 ...
-"github_com/velonetics/velonetics-metrics": {
+"github_com/pucora/velonetics-metrics": {
         "collection_time": "30s",
         "listen_address": "127.0.0.1:8090"
     }

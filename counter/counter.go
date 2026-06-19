@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/influxdata/influxdb/client/v2"
-	"github.com/velonetics/lura/v2/logging"
+	"github.com/pucora/lura/v2/logging"
 )
 
 var (
@@ -24,10 +24,10 @@ func Points(hostname string, now time.Time, counters map[string]int64, logger lo
 }
 
 var (
-	requestCounterPattern = `velonetics\.proxy\.requests\.layer\.([a-zA-Z]+)\.name\.(.*)\.complete\.(true|false)\.error\.(true|false)`
+	requestCounterPattern = `pucora\.proxy\.requests\.layer\.([a-zA-Z]+)\.name\.(.*)\.complete\.(true|false)\.error\.(true|false)`
 	requestCounterRegexp  = regexp.MustCompile(requestCounterPattern)
 
-	responseCounterPattern = `velonetics\.router\.response\.(.*)\.status\.([\d]{3})\.count`
+	responseCounterPattern = `pucora\.router\.response\.(.*)\.status\.([\d]{3})\.count`
 	responseCounterRegexp  = regexp.MustCompile(responseCounterPattern)
 )
 
@@ -105,8 +105,8 @@ func connectionPoints(hostname string, now time.Time, counters map[string]int64,
 	res := make([]*client.Point, 2)
 
 	in := map[string]interface{}{
-		"current": int(counters["velonetics.router.connected"]),
-		"total":   int(counters["velonetics.router.connected-total"]),
+		"current": int(counters["pucora.router.connected"]),
+		"total":   int(counters["pucora.router.connected-total"]),
 	}
 	incoming, err := client.NewPoint("router", map[string]string{"host": hostname, "direction": "in"}, in, now)
 	if err != nil {
@@ -116,8 +116,8 @@ func connectionPoints(hostname string, now time.Time, counters map[string]int64,
 	res[0] = incoming
 
 	out := map[string]interface{}{
-		"current": int(counters["velonetics.router.disconnected"]),
-		"total":   int(counters["velonetics.router.disconnected-total"]),
+		"current": int(counters["pucora.router.disconnected"]),
+		"total":   int(counters["pucora.router.disconnected-total"]),
 	}
 	outgoing, err := client.NewPoint("router", map[string]string{"host": hostname, "direction": "out"}, out, now)
 	if err != nil {
